@@ -18,7 +18,7 @@ repositories {
 dependencies {
 	// 26.1 is unobfuscated, so there is NO mappings dependency anymore. Do not add one.
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	// Fabric API. In 26.1 you depend on it with "implementation", not "modImplementation".
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
