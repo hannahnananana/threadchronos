@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.threadsoffate.mod.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "PlayerDeathMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+	// Minecraft 26.1 renamed the plugin id from "fabric-loom" to "net.fabricmc.fabric-loom".
+	id 'net.fabricmc.fabric-loom' version '1.15.+'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	// Add repositories here as needed, e.g. for mod jars on Modrinth/CurseForge you depend on.
+}
+
+dependencies {
+	// 26.1 is unobfuscated, so there is NO mappings dependency anymore. Do not add one.
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API. In 26.1 you depend on it with "implementation", not "modImplementation".
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	// Minecraft 26.1 requires Java 25.
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+
+	withSourcesJar()
+}
+
+// 26.1 no longer needs a remapJar step since the game is unobfuscated - "jar" is the real output.
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}" }
+	}
+}

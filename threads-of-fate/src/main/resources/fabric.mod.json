@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "threadsoffate",
+  "version": "${version}",
+  "name": "Threads of Fate",
+  "description": "Every player starts with 3 lives (max 7). Die and you drop your Thread of Fate - grab it back for another life. Run out and you're banned until someone revives you with your head, totems, and diamonds.",
+  "authors": [
+    "You"
+  ],
+  "contact": {},
+  "license": "CC0-1.0",
+  "icon": "assets/threadsoffate/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.threadsoffate.mod.ThreadsOfFate"
+    ]
+  },
+  "mixins": [
+    "threadsoffate.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~26.1",
+    "fabric-api": "*",
+    "java": ">=25"
+  }
+}
